@@ -17,5 +17,5 @@
     "mysql": "^2.18.1",
     "nodemon": "^2.0.22"
   },
-  "proxy": "http://localhost:8080"
+  "proxy": "http://localhost:3001"
 }
