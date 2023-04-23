@@ -16,7 +16,7 @@ const db = mysql.createConnection({
 app.get('/', (req, res) => {
     const sql = "select * from student";
     db.query(sql, (err, result) => {
-        if(err) return res.json({Message: "Error inside server"});
+        if(err) return res.json({Message: "Error inside server "+ err});
         return res.json(result)
     })
 })
@@ -37,7 +37,7 @@ app.get('/read/:id', (req, res) => {
     const sql = "select * from student where id = ?";
     const id = req.params.id;
     db.query(sql,[id], (err, result) => {
-        if(err) return res.json({Message: "Error inside server"});
+        if(err) return res.json({Message: "Error inside server "+ err});
         return res.json(result)
     })
 })
@@ -46,7 +46,7 @@ app.put('/update/:id', (req,res) => {
     const sql = 'update student set `name`=?, `email`=? where id=?';
     const id = req.params.id
     db.query(sql, [req.body.name, req.body.email, id], (err, result) => {
-        if(err) return res.json({message: "Error inside server"});
+        if(err) return res.json({message: "Error inside server "+ err});
         return res.json(result);
     })
 })
@@ -55,7 +55,7 @@ app.delete('/delete/:id', (req, res) => {
     const sql = "delete from student where id = ?"
     const id = req.params.id;
     db.query(sql,[id], (err, result) => {
-        if(err) return res.json({message: "Error inside server"});
+        if(err) return res.json({message: "Error inside server "+ err});
         return res.json(result);
     })
 })
